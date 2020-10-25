@@ -1,0 +1,9 @@
+img{
+    max-width: 100%;
+}
+.bg-indigo-500{
+    background-color: #0c63ce!important;
+}
+.hover\:bg-indigo-600:hover{
+    background-color: #094c9e!important;
+}
