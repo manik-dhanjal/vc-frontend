@@ -1,6 +1,5 @@
 import React from "react"
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Link
@@ -13,7 +12,6 @@ import "./App.css"
 function App() {
   return (
 
-    <Router>
       <Layout>
         <Switch>
           <Route exact path="/">
@@ -24,7 +22,6 @@ function App() {
           </Route>
         </Switch>
       </Layout>
-  </Router>
   );
 }
 
