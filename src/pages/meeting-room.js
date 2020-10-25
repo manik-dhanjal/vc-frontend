@@ -10,15 +10,15 @@ const Room=()=>{
     const {roomId}= useParams()
    
     useEffect(()=>{
-        const socket = io.connect("localhost:8000");
+        const socket = io.connect("frozen-hollows-67563.herokuapp.com");
         const peer = new Peer(undefined,{
-            host:"localhost",
-            port:"8001"
+            host:"frozen-hollows-67563.herokuapp.com",
+            port:"443"
         })
         peer.on('open',id=>{
             socket.emit("join-room",roomId,id)
         })
-        
+        const calls={}
         const myVideo=document.createElement("video")
         var videoCont=document.querySelector(".video-cont")
         navigator.mediaDevices.getUserMedia({video:true,audio:true})
@@ -37,22 +37,28 @@ const Room=()=>{
                     video.remove();
                 })
             })
+            
             socket.on("user-added",(userId)=>{
-                console.log(userId,'added')
+              console.log(userId,'added')
               connectToNewUser(userId,stream)
+              
             })
         })
-        
+        socket.on("user-disconnected",userId=>{
+               if(calls[userId]) calls[userId].close()
+        })
         const connectToNewUser=(userId,stream)=>{
          var call=peer.call(userId,stream)
          const video=document.createElement('video')
          call.on('stream',(userVideoStream)=>{
              console.log(userVideoStream,'stream')
             videoHandler(video,userVideoStream)
+          
          })
          call.on('close',()=>{
              video.remove();
          })
+         calls[userId]=call
         }
         const videoHandler=(video,stream)=>{
         video.srcObject=stream;

@@ -13,7 +13,7 @@ const JoinForm=({handleRedirect})=>{
     }
     const handleSubmit=(e)=>{
         e.preventDefault()
-        fetch("http://localhost:8000/join-meet",{
+        fetch("https://frozen-hollows-67563.herokuapp.com/join-meet",{
             method:'POST',
             headers: {
                 'Content-Type': 'application/json',
