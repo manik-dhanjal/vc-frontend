@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react"
 import { useParams} from "react-router-dom"
-import io, { connect } from 'socket.io-client';
+import io from 'socket.io-client';
 import Peer from 'peerjs';
 
 
@@ -10,12 +10,15 @@ const Room=()=>{
     const {roomId}= useParams()
    
     useEffect(()=>{
-        const socket = io.connect("frozen-hollows-67563.herokuapp.com");
+        const socket = io.connect("https://frozen-hollows-67563.herokuapp.com/");
         const peer = new Peer(undefined,{
-            host:"frozen-hollows-67563.herokuapp.com",
+      
+            host:"frozen-hollows-67563.herokuapp.com/",
             port:"443"
         })
+        
         peer.on('open',id=>{
+            console.log(peer)
             socket.emit("join-room",roomId,id)
         })
         const calls={}
