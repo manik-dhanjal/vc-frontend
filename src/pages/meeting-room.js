@@ -10,11 +10,11 @@ const Room=()=>{
     const {roomId}= useParams()
    
     useEffect(()=>{
-        const socket = io.connect("localhost:8000");
+        const socket = io.connect("frozen-hollows-67563.herokuapp.com");
         const peer = new Peer(undefined,{
-            path: '/peerjs',
-            host: 'localhost',
-            port: 8080,
+            path: '/myapp',
+            host: 'frozen-hollows-67563.herokuapp.com',
+            port: 443,
            
         })
         
