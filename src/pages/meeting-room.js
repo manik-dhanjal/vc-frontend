@@ -12,7 +12,6 @@ const Room=()=>{
     useEffect(()=>{
         const socket = io.connect("frozen-hollows-67563.herokuapp.com");
         const peer = new Peer(undefined,{
-            path: '/myapp',
             host: 'frozen-hollows-67563.herokuapp.com',
             port: 443,
            
