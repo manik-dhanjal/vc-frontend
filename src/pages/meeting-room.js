@@ -14,7 +14,7 @@ const Room=()=>{
         const peer = new Peer(undefined,{
             path: '/peerjs',
             host: 'frozen-hollows-67563.herokuapp.com',
-            port: 443,
+            port: 8080,
            
         })
         
