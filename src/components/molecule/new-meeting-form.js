@@ -17,7 +17,7 @@ const NewForm=({handleRedirect},props)=>{
     const handleSubmit=(e)=>{
       
         e.preventDefault()
-        fetch("frozen-hollows-67563.herokuapp.com/create-meet",{
+        fetch("https://frozen-hollows-67563.herokuapp.com/create-meet",{
             method:'POST',
             headers: {
                 'Content-Type': 'application/json',
